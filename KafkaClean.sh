@@ -33,3 +33,5 @@ else
     echo "Kafka Clean has been cancelled!"
     echo ""
 fi
+
+#The End
