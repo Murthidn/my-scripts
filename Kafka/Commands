@@ -1,0 +1,11 @@
+Read all from beginning:
+
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic rsconnectexportuibulk 
+
+Read all from beginning to given number:
+
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic rsconnectexportuibulk --from-beginning --max-messages 10
+
+Live Reading:
+
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic  rdpentitymanagebulkinbound 
