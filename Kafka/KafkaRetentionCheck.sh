@@ -28,7 +28,14 @@ do
 
     else
         getRetentionValue=$(ssh ubuntu@$node_name docker exec -i $container /usr/share/kafka/bin/kafka-topics.sh --describe --zookeeper zookeeper1:2181 --topic "${array[$i]}" | awk '{ print $4}' | head -n 1 | sed 's/,.*//g' | cut -d '=' -f2)
-        echo -e ${RED}"ERROR: Topic \"${array[$i]}\" Retention value is \"$getRetentionValue\""${NC}
+        
+        if [ $getRetentionValue == "86400000" ]; then
+            echo -e ${GREEN}"INFO:  Topic \"${array[$i]}\" Retention is default value (1 day)."${NC}
+
+        else
+            echo -e ${RED}"ERROR: Topic \"${array[$i]}\" Retention value is \"$getRetentionValue\""${NC}
+
+        fi
     fi
 done
 echo -e "\nEnd: Verification is done.\n"
