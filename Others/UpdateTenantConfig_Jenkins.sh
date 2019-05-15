@@ -23,6 +23,7 @@ fi
 echo -e "-----------------------------End : $jobType -----------------------------\n\n"
 
 }
+
 #Function to find and update Tenant
 find_update_tenant(){
 
@@ -48,21 +49,20 @@ for tenants in $(jq '.TenantInfo | keys | .[]' $1); do
          done
 
           #Looping the jobs
-          for jobType in $jobTypeArr; do
-
+          for jobType in $jobTypeArr; 
+          do
               if [ $jobType == "PreparedData" ]; then                  
-              create_job $jobType $1 $tenants  
+                  create_job $jobType $1 $tenants  
 
               elif [ $jobType == "MatchStore" ]; then
-              create_job $jobType $1 $tenants       
+                  create_job $jobType $1 $tenants       
 
               elif [ $jobType == "EntityTransform" ]; then
-              create_job $jobType $1 $tenants       
+                  create_job $jobType $1 $tenants       
                
-            else
-              echo -e "ERROR: $jobType job doesn't exist in storage account file, please verify.\n"
-
-            fi
+              else
+                  echo -e "ERROR: $jobType job doesn't exist in storage account file, please verify.\n"
+              fi
 
           done
           return 0
