@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Get Kafka Node and Container:
 KAFKA_SVC_NAME=$(docker node ls --format "{{.Hostname}}" | grep "zk-kafka")
